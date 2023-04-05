@@ -43,7 +43,7 @@ function Index() {
   return (
     <>
         <h1 className='main-title'>Top News App</h1>
-        {JSON.stringify(news)}
+        {/* {JSON.stringify(news)} */}
         <div className="news-container">
       {news.map((item, idx) => (
         <div key={idx} className='news-card'>
