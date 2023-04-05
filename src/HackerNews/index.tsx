@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./style.css";
 
-function NewsList() {
+function Index() {
   const [news, setNews] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -11,8 +11,11 @@ function NewsList() {
     const slicedIds = newsIds.slice((page - 1) * 30, page * 30);
     const newsItems = await Promise.all(slicedIds.map(async (id) => {
       const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-      return await res.json();
+      const data = await res.json();
+    console.log(data, "item data");
+    return data;
     }));
+    console.log(newsItems, "newwwwwwsssssssss")
     setNews((prevNews) => [...prevNews, ...newsItems]);
     setPage((prevPage) => prevPage + 1);
   };
@@ -40,7 +43,7 @@ function NewsList() {
   return (
     <>
         <h1 className='main-title'>Top News App</h1>
-        {/* {JSON.stringify(news)} */}
+        {JSON.stringify(news)}
         <div className="news-container">
       {news.map((item, idx) => (
         <div key={idx} className='news-card'>
@@ -59,4 +62,4 @@ function NewsList() {
   );
 }
 
-export default NewsList;
+export default Index;
