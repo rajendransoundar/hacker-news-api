@@ -49,7 +49,7 @@ function NewsList() {
                     {item.title}
                 </summary>
                 <p className='title'>{item.title}</p>
-                <a className='link' href={item.url}>Click to View</a>
+                <a className='link' target='blank' href={item.url}>Click to View</a>
             </details>
           <div className="type">{item.type} by {item.by}</div>
         </div>
